@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var services = builder.Services;
-services.AddApiDI();
+services.AddApiDI(builder.Configuration);
 
 var app = builder.Build();
 

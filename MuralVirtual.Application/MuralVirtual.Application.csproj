@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MuralVirtual.Domain\MuralVirtual.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

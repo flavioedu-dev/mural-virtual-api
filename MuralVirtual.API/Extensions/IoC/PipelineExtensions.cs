@@ -1,8 +1,11 @@
-﻿namespace MuralVirtual.API.Extensions.IoC;
+﻿using Microsoft.EntityFrameworkCore;
+using MuralVirtual.Infrastructure.Repositories;
+
+namespace MuralVirtual.API.Extensions.IoC;
 
 public static class PipelineExtensions
 {
-    public static void AddApiDI(this IServiceCollection services)
+    public static void AddApiDI(this IServiceCollection services, IConfiguration configuration)
     {
         #region Default
         services.AddControllers();
@@ -13,5 +16,11 @@ public static class PipelineExtensions
         #region AutoMapper
         services.AddAutoMapper(typeof(Program));
         #endregion AutoMapper
+
+        #region Context
+        services.AddDbContextPool<MuralVirtualDbContext>(options =>
+                options.UseNpgsql(configuration.GetConnectionString("MuralVirtualDB"), options => options.MigrationsAssembly("MuralVirtual.API"))
+        );
+        #endregion Context
     }
 }
