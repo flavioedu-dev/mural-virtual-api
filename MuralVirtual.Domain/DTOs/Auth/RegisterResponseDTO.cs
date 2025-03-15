@@ -2,4 +2,7 @@
 
 public class RegisterResponseDTO
 {
+    public string? Message { get; set; }
+
+    public long Id { get; set; }
 }
