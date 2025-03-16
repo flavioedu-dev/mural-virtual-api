@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Auth.User.Register.Sucess" xml:space="preserve">
+  <data name="Auth_User_Register_Fail_UserExists" xml:space="preserve">
+    <value>User already registered</value>
+  </data>
+  <data name="Auth_User_Register_Sucess" xml:space="preserve">
     <value>User registered successfully</value>
   </data>
 </root>

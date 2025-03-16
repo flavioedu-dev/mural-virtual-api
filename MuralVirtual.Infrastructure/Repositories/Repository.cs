@@ -9,7 +9,7 @@ public class Repository<T> : IRepository<T> where T : class
     protected MuralVirtualDbContext? _context;
 
     public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate)
-        => await _context!.Set<T>().FindAsync(predicate);
+        => await _context!.Set<T>().FirstOrDefaultAsync(predicate);
 
     public async Task<T?> GetByIdAsync(long id)
         => await _context!.Set<T>().FindAsync(id);

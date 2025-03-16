@@ -61,11 +61,20 @@ namespace MuralVirtual.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User already registered.
+        /// </summary>
+        public static string Auth_User_Register_Fail_UserExists {
+            get {
+                return ResourceManager.GetString("Auth_User_Register_Fail_UserExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User registered successfully.
         /// </summary>
         public static string Auth_User_Register_Sucess {
             get {
-                return ResourceManager.GetString("Auth.User.Register.Sucess", resourceCulture);
+                return ResourceManager.GetString("Auth_User_Register_Sucess", resourceCulture);
             }
         }
     }
