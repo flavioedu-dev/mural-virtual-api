@@ -3,8 +3,7 @@ using MuralVirtual.API.Extensions.IoC;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var services = builder.Services;
-services.AddDI(builder.Configuration);
+builder.Services.AddDI(builder.Configuration);
 
 var app = builder.Build();
 
@@ -14,6 +13,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.AddMiddlewares();
 
 app.UseHttpsRedirection();
 

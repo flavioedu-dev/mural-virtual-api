@@ -19,4 +19,8 @@
     <ProjectReference Include="..\MuralVirtual.CrossCutting\MuralVirtual.CrossCutting.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Middlewares\HandlerException\Response\" />
+  </ItemGroup>
+
 </Project>

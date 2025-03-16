@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MuralVirtual.API.Middlewares;
 using MuralVirtual.CrossCutting.Extensions;
 using MuralVirtual.Infrastructure.Repositories;
 
@@ -30,5 +31,10 @@ public static class PipelineExtensions
         services.AddApiDI(configuration);
         services.AddApplicationDI();
         services.AddInfrastructureDI();
+    }
+
+    public static void AddMiddlewares(this WebApplication app)
+    {
+        app.GlobalErrorHandling();
     }
 }
