@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MuralVirtual.Application.Services;
+using MuralVirtual.Domain.Configurations;
 using MuralVirtual.Domain.Interfaces.Application;
 using MuralVirtual.Domain.Interfaces.Infrastructure.Repositories;
 using MuralVirtual.Infrastructure.Repositories;
@@ -12,8 +13,8 @@ public static class PipelineExtensions
     {
         #region Auth
         services.AddScoped<IAuthServices, AuthServices>();
+        services.AddScoped<IPasswordEncryption, PasswordEncryption>();
         #endregion Auth
-
     }
 
     public static void AddInfrastructureDI(this IServiceCollection services)

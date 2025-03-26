@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MuralVirtual.API.Middlewares;
 using MuralVirtual.CrossCutting.Extensions;
+using MuralVirtual.Domain.Configurations;
 using MuralVirtual.Infrastructure.Repositories;
 
 namespace MuralVirtual.API.Extensions.IoC;
@@ -31,6 +32,10 @@ public static class PipelineExtensions
         services.AddApiDI(configuration);
         services.AddApplicationDI();
         services.AddInfrastructureDI();
+
+        #region Configurations
+        services.Configure<PasswordEncryptionOptions>(configuration.GetSection("PasswordEncryption"));
+        #endregion Configurations
     }
 
     public static void AddMiddlewares(this WebApplication app)

@@ -12,11 +12,13 @@ public class AuthServices : IAuthServices
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _uof;
+    private readonly IPasswordEncryption _passwordEncryption;
 
-    public AuthServices(IMapper mapper, IUnitOfWork uof)
+    public AuthServices(IMapper mapper, IUnitOfWork uof, IPasswordEncryption passwordEncryption)
     {
         _mapper = mapper;
         _uof = uof;
+        _passwordEncryption = passwordEncryption;
     }
 
     public async Task<RegisterResponseDTO> Register(RegisterDTO registerDTO)
@@ -26,6 +28,8 @@ public class AuthServices : IAuthServices
 
         if (userRegistered is not null)
             throw new CustomResponseException(ApplicationMessages.Auth_User_Register_Fail_UserExists, 400);
+
+        registerDTO.Password = _passwordEncryption.HashPassword(registerDTO.Password!);
 
         User user = _mapper.Map<User>(registerDTO);
 
