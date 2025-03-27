@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore;
 using MuralVirtual.API.Middlewares;
 using MuralVirtual.CrossCutting.Extensions;
 using MuralVirtual.Domain.Configurations;
@@ -13,6 +15,11 @@ public static class PipelineExtensions
         #region AutoMapper
         services.AddAutoMapper(typeof(Program));
         #endregion AutoMapper
+
+        #region FluentValidation
+        services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+        services.AddFluentValidationAutoValidation();
+        #endregion FluentValidation
 
         #region Context
         services.AddDbContextPool<MuralVirtualDbContext>(options =>
