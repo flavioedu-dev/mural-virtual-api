@@ -26,6 +26,6 @@ public class AuthController : ControllerBase
 
         RegisterResponseDTO registerResponseDTO = await _authServices.Register(registerDTO);
 
-        return Ok(registerResponseDTO);
+        return StatusCode(StatusCodes.Status200OK, registerResponseDTO);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using MuralVirtual.API.Filters;
 using MuralVirtual.API.Middlewares;
 using MuralVirtual.CrossCutting.Extensions;
 using MuralVirtual.Domain.Configurations;
@@ -31,7 +32,12 @@ public static class PipelineExtensions
     public static void AddDI(this IServiceCollection services, IConfiguration configuration)
     {
         #region Default
-        services.AddControllers();
+        services.AddControllers(options =>
+            options.Filters.Add(typeof(CustomErrorResponse))
+        ).ConfigureApiBehaviorOptions(options =>
+        {
+            options.SuppressModelStateInvalidFilter = true;
+        });
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
         #endregion Default
